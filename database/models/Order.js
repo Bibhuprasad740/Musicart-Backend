@@ -7,6 +7,10 @@ const orderSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
+    name: {
+      type: String,
+      required: true,
+    },
     products: [
       {
         type: mongoose.Types.ObjectId,
@@ -24,9 +28,13 @@ const orderSchema = mongoose.Schema(
         required: true,
       },
     },
+    // address: {
+    //   type: mongoose.Types.ObjectId,
+    //   ref: "Address",
+    //   required: true,
+    // },
     address: {
-      type: mongoose.Types.ObjectId,
-      ref: "Address",
+      type: String,
       required: true,
     },
     paymentMode: {
