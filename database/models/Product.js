@@ -34,6 +34,21 @@ const productSchema = mongoose.Schema(
         required: true,
       },
     ],
+    type: {
+      type: String,
+      enum: ["inear", "onear", "overear"],
+      required: true,
+    },
+    rating: {
+      totalCount: {
+        type: Number,
+        required: true,
+      },
+      productRating: {
+        type: Number,
+        required: true,
+      },
+    },
   },
   {
     timestamps: true,

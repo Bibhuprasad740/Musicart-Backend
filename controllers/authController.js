@@ -38,9 +38,13 @@ exports.signup = async (req, res) => {
       });
       await user.save();
 
-      const token = jwt.sign({ email: email }, process.env.JWT_SECRET, {
-        expiresIn: "30d",
-      });
+      const token = jwt.sign(
+        { email: email, _id: user._id },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "30d",
+        }
+      );
 
       res.status(200).send({ token, user });
     });
@@ -63,9 +67,13 @@ exports.signin = async (req, res) => {
       return res.status(400).send("Incorrect password!");
     }
 
-    const token = jwt.sign({ email: email }, process.env.JWT_SECRET, {
-      expiresIn: "30d",
-    });
+    const token = jwt.sign(
+      { email: email, _id: user._id },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "30d",
+      }
+    );
 
     res.status(200).send({ token, user });
   } catch (error) {

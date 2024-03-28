@@ -9,13 +9,22 @@ const mongoConnect = require("./database/db");
 
 // routes
 const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+// auth routes
 app.use("/auth", authRoutes);
+
+//productRoutes
+app.use("/api", productRoutes);
+
+//cart routes
+app.use("/cart", cartRoutes);
 
 mongoConnect()
   .then((result) => {
