@@ -35,3 +35,33 @@ exports.placeOrder = async (req, res) => {
     res.status(400).send("Can not place order!");
   }
 };
+
+exports.getOrders = async (req, res) => {
+  try {
+    console.log("Get orders request...");
+    const userId = req.userId;
+    const orders = await Order.find({ userId });
+
+    res.status(200).send(orders);
+  } catch (error) {
+    console.log("Error in orderController.getOrders", error);
+    res.status(400).send("Can not get orders!");
+  }
+};
+
+exports.getOrder = async (req, res) => {
+  try {
+    console.log("Get order request...");
+    const userId = req.userId;
+    const { orderId } = req.params;
+    const order = await Order.findOne({
+      userId,
+      _id: orderId,
+    });
+
+    res.status(200).send(order);
+  } catch (error) {
+    console.log("Error in ordercontroller.getOrder", error);
+    res.status(400).send("Can not get order!");
+  }
+};
