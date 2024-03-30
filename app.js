@@ -13,6 +13,7 @@ const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const addressRoutes = require("./routes/addressRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+const feedbackRoutes = require("./routes/feedbackRoutes");
 
 //middlewares
 const checkAuthorization = require("./middlewares/authorization");
@@ -36,6 +37,9 @@ app.use("/addresses", checkAuthorization, addressRoutes);
 
 //order routes
 app.use(checkAuthorization, orderRoutes);
+
+// feedback routes
+app.use("/feedback", checkAuthorization, feedbackRoutes);
 
 mongoConnect()
   .then((result) => {
