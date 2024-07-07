@@ -1,3 +1,5 @@
+'use strict'
+
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -27,7 +29,7 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 
 //productRoutes
-app.use("/api", productRoutes);
+app.use("/products", productRoutes);
 
 //cart routes
 app.use("/cart", checkAuthorization, cartRoutes);
@@ -36,10 +38,15 @@ app.use("/cart", checkAuthorization, cartRoutes);
 app.use("/addresses", checkAuthorization, addressRoutes);
 
 //order routes
-app.use(checkAuthorization, orderRoutes);
+app.use('/orders',checkAuthorization, orderRoutes);
 
 // feedback routes
 app.use("/feedback", checkAuthorization, feedbackRoutes);
+
+app.use('/', (req, res) => {
+  console.log('this is embarassing..');
+  res.status(200).send('/ Route does not exist!')
+})
 
 mongoConnect()
   .then((result) => {

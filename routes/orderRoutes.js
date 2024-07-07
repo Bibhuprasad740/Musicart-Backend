@@ -4,8 +4,10 @@ const orderController = require("../controllers/orderController");
 
 router.post("/placeOrder", orderController.placeOrder);
 
-router.get("/orders/:userId", orderController.getOrders);
+// orders/user/<userId>
+router.get("/user/:userId", orderController.getOrders);
 
-router.get("/order/:orderId", orderController.getOrder);
+// orders/<orderId>
+router.get("/:orderId", orderController.getOrder);
 
 module.exports = router;
