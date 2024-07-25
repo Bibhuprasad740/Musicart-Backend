@@ -44,7 +44,6 @@ app.use('/orders',checkAuthorization, orderRoutes);
 app.use("/feedback", checkAuthorization, feedbackRoutes);
 
 app.use('/', (req, res) => {
-  console.log('this is embarassing..');
   res.status(200).send('/ Route does not exist!')
 })
 
