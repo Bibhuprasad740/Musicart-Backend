@@ -11,13 +11,13 @@ exports.getAllProducts = async (req, res) => {
     }
 
     if (filters) {
-      if (filters.typeFilter !== "") {
+      if (filters.typeFilter != "") {
         query = query.where("type").equals(filters.typeFilter);
       }
-      if (filters.companyFilter !== "") {
+      if (filters.companyFilter != "") {
         query = query.where("brand").equals(filters.companyFilter.toUpperCase());
       }
-      if (filters.colorFilter !== "") {
+      if (filters.colorFilter != "") {
         const color =
           filters.colorFilter.charAt(0).toUpperCase() +
           filters.colorFilter.slice(1);
