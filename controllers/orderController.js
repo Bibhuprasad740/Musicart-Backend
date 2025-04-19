@@ -61,7 +61,7 @@ exports.getOrder = async (req, res) => {
 
     res.status(200).send(order);
   } catch (error) {
-    console.log("Error in ordercontroller.getOrder", error);
+    console.log("Error in orderController.getOrder", error);
     res.status(400).send("Can not get order!");
   }
 };
